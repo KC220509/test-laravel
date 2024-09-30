@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 // use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Api\Task\CreateRequest;
+use App\Http\Resources\TaskResource;
 use App\Service\TaskService;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,11 @@ class TaskContrller extends Controller
         
         $result = $this->taskService->create($request);
         
+        // $result = false;
         if ($result) {
-            return $result;
+            return new TaskResource($result);
         }
 
-        dd("ffff");
+        return response()->json(['message'=> 'error']);
     }
 }   
