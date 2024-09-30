@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 // use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Api\Task\CreateRequest;
+use App\Http\Requests\Api\Task\UpdateRequest;
 use App\Http\Resources\TaskResource;
+use App\Models\Task;
 use App\Service\TaskService;
 use Illuminate\Http\Request;
 
 
-class TaskContrller extends Controller
+class TaskController extends Controller
 {
     protected $taskService;
 
@@ -34,5 +36,23 @@ class TaskContrller extends Controller
         }
 
         return response()->json(['message'=> 'error']);
+    }
+
+    public function show(Task $task){
+        return new TaskResource(resource: $task);
+    }
+
+    public function update(Task $task, UpdateRequest $updateRequest)
+    {
+
+        $request = $updateRequest->validated();
+        
+        $result = $this->taskService->update($task,$request);
+        
+        if ($result) {
+            return response()->json(['message' => 'Cập nhật thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+
+        }
+        return response()->json(['message'=> 'Cập nhật không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }   
