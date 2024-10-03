@@ -21,9 +21,11 @@ class TaskController extends Controller
         $this->taskService = $taskService;
     }
 
-    public function index() 
+    public function index($limit = 3)
     {
-        return response()->json(['message' => 'Hello KC']);
+        $tasks = $this->taskService->pagination($limit);
+
+        return response()->json($tasks);
     }
     public function store(CreateRequest $createRequest)
     {
@@ -86,4 +88,6 @@ class TaskController extends Controller
         
         return response()->json(['message'=> 'Khôi phục dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
     }
+
+    
 }   

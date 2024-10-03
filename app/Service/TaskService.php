@@ -54,5 +54,9 @@ class TaskService{
     }
 
 
-    
+    public function pagination($limit)
+    {
+        return Task::select("name","description","status")
+                    ->paginate($limit);
+    }
 }
