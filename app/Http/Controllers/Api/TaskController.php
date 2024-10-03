@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 // use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Api\Task\CreateRequest;
+use App\Http\Requests\Api\Task\DeleteRequest;
 use App\Http\Requests\Api\Task\UpdateRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
@@ -54,5 +55,35 @@ class TaskController extends Controller
 
         }
         return response()->json(['message'=> 'Cập nhật không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function soft_delete($id)
+    {
+        $task = $this->taskService->findId($id);
+
+        if (!$task) {
+            return response()->json(['message'=> 'Dữ liệu không tồn tại'], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+
+        $result = $this->taskService->softDelete($task);
+           
+        if ($result) {
+            return response()->json(['message' => 'Xoá dữ liệu thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+
+        }
+        return response()->json(['message'=> 'Xoá dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+   
+    }
+
+    public function restore_delete($id)
+    {
+        $task = $this->taskService->findIdSoftDelete($id);
+
+        $result = $this->taskService->restore($task);
+        if ($result) {
+            return response()->json(['message'=> 'Khôi phục dữ liệu thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+        
+        return response()->json(['message'=> 'Khôi phục dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }   

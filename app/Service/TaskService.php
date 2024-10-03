@@ -32,4 +32,27 @@ class TaskService{
 
         return $task->update($params);
     }
+
+    public function findId($id){
+        return Task::find($id);
+    }
+
+    public function softDelete($task)
+    {
+        return $task->delete();
+    }
+
+
+    public function findIdSoftDelete($id)
+    {
+        return Task::withTrashed()->where("id", $id)->first();
+    }
+
+    public function restore($task)
+    {
+        return $task->restore();
+    }
+
+
+    
 }
