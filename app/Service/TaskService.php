@@ -29,8 +29,13 @@ class TaskService{
 
     public function update($task, $params)
     {
+        try {
+            return $task->update($params);
 
-        return $task->update($params);
+        } catch (Exception $ex){
+            Log::error($ex);
+            return false;
+        }
     }
 
     public function findId($id){
