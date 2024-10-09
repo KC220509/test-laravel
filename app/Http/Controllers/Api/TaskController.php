@@ -53,10 +53,10 @@ class TaskController extends Controller
         $result = $this->taskService->update($task,$request);
         
         if ($result) {
-            return response()->json(['message' => 'Cập nhật thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(['message' => 'Cập nhật dữ liệu thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
 
         }
-        return response()->json(['message'=> 'Cập nhật không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message'=> 'Cập nhật dữ liệu không thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function soft_delete($id)
@@ -70,10 +70,10 @@ class TaskController extends Controller
         $result = $this->taskService->softDelete($task);
            
         if ($result) {
-            return response()->json(['message' => 'Xoá dữ liệu thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(['message' => 'Xoá dữ liệu thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
 
         }
-        return response()->json(['message'=> 'Xoá dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message'=> 'Xoá dữ liệu không thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
    
     }
 
@@ -83,10 +83,10 @@ class TaskController extends Controller
 
         $result = $this->taskService->restore($task);
         if ($result) {
-            return response()->json(['message'=> 'Khôi phục dữ liệu thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(['message'=> 'Khôi phục dữ liệu thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
         }
         
-        return response()->json(['message'=> 'Khôi phục dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message'=> 'Khôi phục dữ liệu không thành công.'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     
