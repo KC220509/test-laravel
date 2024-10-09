@@ -28,4 +28,5 @@ Route::group(['prefix'=> 'tasks'], function () {
     Route::put('/{task}', [TaskController::class, 'update']);
     Route::delete('/{id}', [TaskController::class, 'soft_delete']);
     Route::patch('/{id}', [TaskController::class, 'restore_delete']);
+    Route::delete('/{task}', [TaskController::class,'destroy']);
 });

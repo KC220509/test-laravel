@@ -89,5 +89,8 @@ class TaskController extends Controller
         return response()->json(['message'=> 'Khôi phục dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
-    
+    public function destroy(Task $task)
+    {
+        return $task->delete();
+    }
 }   
