@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->float('price')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
