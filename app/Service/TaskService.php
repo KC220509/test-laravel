@@ -17,7 +17,6 @@ class TaskService{
     public function create($params)
     {
         try {
-            // $params["status"] = 1;
 
             return $this->model->create($params);
 
