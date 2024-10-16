@@ -17,7 +17,6 @@ class TaskService{
     public function create($params)
     {
         try {
-
             return $this->model->create($params);
 
         } catch (Exception $e){
@@ -58,9 +57,14 @@ class TaskService{
     }
 
 
-    public function pagination($limit)
+    // public function pagination($limit)
+    // {
+    //     return Task::select("name", "description", "status")
+    //                 ->paginate($limit);
+    // }
+
+    public function getList()
     {
-        return Task::select("name", "description", "status")
-                    ->paginate($limit);
+        return $this->model->orderBy("id","desc");
     }
 }

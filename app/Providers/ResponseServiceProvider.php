@@ -1,34 +1,22 @@
 <?php
-
+// Place this file on the Providers folder of your project
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\ResponseFactory;
 
-
 class ResponseServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
-     * 
-     * Bootstrap services.
+     * Bootstrap the application services.
      *
      * @return void
      */
     public function boot(ResponseFactory $factory)
     {
-        $factory->macro('success', function ($message = '', $data = null) use ($factory) {
+        $factory->macro('api_success', function ($message = '', $data = null) use ($factory) {
             $format = [
-                'status' => 'ok',
+                'status' => 200,
                 'message' => $message,
                 'data' => $data,
             ];
@@ -36,14 +24,24 @@ class ResponseServiceProvider extends ServiceProvider
             return $factory->make($format);
         });
 
-        $factory->macro('error', function (string $message = '', $errors = []) use ($factory){
+        $factory->macro('api_error', function (string $message = '', $errors = []) use ($factory){
             $format = [
-                'status' => 'error', 
+                'status' => 500, 
                 'message' => $message,
                 'errors' => $errors,
             ];
 
             return $factory->make($format);
         });
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 }
