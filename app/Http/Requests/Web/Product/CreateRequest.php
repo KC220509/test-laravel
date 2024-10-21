@@ -27,6 +27,8 @@ class CreateRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'price'=> 'nullable',
+            'sale' => 'nullable',
+            'procate_id' => 'required'
         ];
     }
     

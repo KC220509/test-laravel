@@ -41,6 +41,18 @@
             padding: 8px 70px;
             gap: 50px;
         }
+        
+        @media (max-width: 1290px) {
+            #myLayout{
+                padding: 8px 40px;
+            }
+        }
+        @media (max-width: 1200px) {
+            #myLayout{
+                padding: 8px 10px;
+            }
+        
+        }
     </style>
 </head>
 <body>

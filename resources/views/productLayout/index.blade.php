@@ -8,6 +8,7 @@
             <tr>
                 <th style="width: 27%;">Name</th>
                 <th style="width: 27%;">Description</th>
+                <th style="width: 27%;">Sale (%)</th>
                 <th style="width: 27%;">Price</th>
                 <th colspan="2">
                     <!-- <a href="/products/create">New Product</a> -->
@@ -20,6 +21,7 @@
                 <tr>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description}}</td>
+                    <td>{{ $item->sale /100 }}</td>
                     <td>{{ $item->price }}</td> 
                     <td class="row function" colspan="2">
                         <a class="btn btn-view" href="{{ route('product.show', $item->id) }}">View</a>

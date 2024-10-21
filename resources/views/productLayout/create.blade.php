@@ -10,7 +10,17 @@
         <input type="text" name="description" id="description" class="form-control"></br>
         <label>Price</label></br>
         <input type="number" name="price" id="price" class="form-control"></br>
+        <label for="sale">Sale (%)</label></br>
+        <input type="text" name="sale" id="sale" class="form-control" ></br>
+        <label for="procate_id">Category</label></br>
+        <select name="procate_id" id="procate_id" class="form-control">
+            @foreach ($cates as $cate)
+                <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+            @endforeach
+        </select>
+
         <input type="submit" value="Save" class="btn btn-success"></br>
+        
     </form>
 @endsection
 

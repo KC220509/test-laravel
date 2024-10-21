@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Product\CreateRequest;
 use App\Http\Requests\Web\Product\UpdateRequest;
-use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Service\CategoryService;
 use App\Service\ProductService;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $productService;
-    public function __construct(ProductService $productService)
+    protected $productService, $categoryService;
+    public function __construct(ProductService $productService, CategoryService $categoryService)
     {
         $this->productService = $productService;
+        $this->categoryService = $categoryService;
     }
     public function index()
     {
@@ -25,7 +25,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('productLayout.create');
+        $cates = $this->categoryService->getList();
+        return view('productLayout.create', data: ['cates'=> $cates]);
     }
 
     public function store(CreateRequest $createRequest)
@@ -44,10 +45,15 @@ class ProductController extends Controller
         return view('productLayout.show', ['product'=> $product]);
     }
 
+
+
+
     public function edit($id)
     {
         $product = $this->productService->getById($id);
-        return view('productLayout.edit', ['product'=> $product]);
+        $cates = $this->categoryService->getList();
+
+        return view('productLayout.edit', ['product'=> $product, 'cates'=> $cates]);
     }
 
     public function updateProduct(Product $product, UpdateRequest $updateRequest)

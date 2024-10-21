@@ -9,7 +9,6 @@ class ProductService
     protected $product;
     public function __construct(Product $product)
     {
-        // $this->product = $product;
         $this->product = $product;
     }
 

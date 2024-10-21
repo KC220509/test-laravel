@@ -27,7 +27,7 @@
                         <li><a href="/login">Đăng nhập</a></li>
                     </ul>
                 </div>
-                <a class="nav-cart" href="">
+                <a class="nav-cart" href="#" title="Giỏ hàng">
                     <i class="ti-shopping-cart"></i>
                     <span class="quantity-product-cart">0</span>
                 </a>

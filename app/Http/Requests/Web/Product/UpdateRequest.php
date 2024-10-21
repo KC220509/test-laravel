@@ -25,16 +25,22 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
-            'price'=> 'nullable'
+            'image' => 'nullable',
+            'description' => 'nullable',
+            'price' => 'nullable',
+            'sale' => 'nullable',
+            'procate_id' => 'required'
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'Hãy nhập name.',
-            'description.required' => 'Hãy nhập description.',
-            'price.nullable' => 'error',
+            'image.nullable' => 'Hãy chọn ảnh sản phẩm',
+            'description.nullable' => '',
+            'price.nullable' => '0',
+            'sale' => 'Khuyến mãi giảm giá',
+            'procate_id' => 'Chọn danh mục sản phẩm',
         ];
     }
 }

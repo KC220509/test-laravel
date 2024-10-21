@@ -5,19 +5,52 @@
     <x-slot name="linkcss">
         <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     </x-slot>
-    <div class="banner-container">
-        <div class="banner-slide">
-            <img src="{{ url('/assets/images/banner1.jpg') }}" alt="Sports Apparel">    
-            <img src="{{ url('/assets/images/banner2.jpg') }}" alt="Sports Shoes">    
-            <img src="{{ url('/assets/images/banner3.jpg') }}" alt="Sports Accessories">
-            <img src="{{ url('/assets/images/banner4.jpg') }}" alt="Fitness Gear">
+    <div class="container flex-row">
+        <div class="cate-container">
+            <h2>Danh mục sản phẩm</h2>
+            <div class="cate-box flex-col">
+                @foreach ($cates as $cate)
+                    <a class="cate-link flex-row" href="#">
+                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
+                        <h5 class="cate-name">{{ $cate->name }}</h5>
+                    </a>
+                @endforeach
+                @foreach ($cates as $cate)
+                    <a class="cate-link flex-row" href="#">
+                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
+                        <h5 class="cate-name">{{ $cate->name }}</h5>
+                    </a>
+                @endforeach
+                @foreach ($cates as $cate)
+                    <a class="cate-link flex-row" href="#">
+                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
+                        <h5 class="cate-name">{{ $cate->name }}</h5>
+                    </a>
+                @endforeach
+                @foreach ($cates as $cate)
+                    <a class="cate-link flex-row" href="#">
+                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
+                        <h5 class="cate-name">{{ $cate->name }}</h5>
+                    </a>
+                @endforeach
+                
+            </div>
+            
         </div>
+        <div class="banner-container">
+            <div class="banner-slide">
+                <img src="{{ url('/assets/images/banner1.jpg') }}" alt="Sports Apparel">    
+                <img src="{{ url('/assets/images/banner2.jpg') }}" alt="Sports Shoes">    
+                <img src="{{ url('/assets/images/banner3.jpg') }}" alt="Sports Accessories">
+                <img src="{{ url('/assets/images/banner4.jpg') }}" alt="Fitness Gear">
+            </div>
 
-        <div class="dots-container">
-            <span class="dot" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
         </div>
     </div>
 
@@ -40,7 +73,7 @@
                         </div>
                         <div class="action-cart flex-row">
                             <span class="sold">Đã bán 2k4</span>
-                            <a href="#">
+                            <a href="#" title="Thêm vào giỏ hàng">
                                 <i class="fa-solid fa-cart-plus"></i>
                             </a>
                         </div>
@@ -255,6 +288,7 @@
             </div>
         </div>
     </div>
+    
 
     <script src="{{ url('/assets/js/banners_slide.js') }}"></script>
     
