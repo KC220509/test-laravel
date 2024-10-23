@@ -34,7 +34,7 @@ class ProductController extends Controller
         $request = $createRequest->validated();
         $result = $this->productService->create($request);
         if ($result) {
-            return redirect()->route('product.index')->with('success', 'Product created successfully.');
+            return redirect()->route('product.index')->with('success', 'Thêm mới sản phẩm thành công');
         }
 
         return response()->json(['message'=> 'error']);

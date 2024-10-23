@@ -15,25 +15,6 @@
                         <h5 class="cate-name">{{ $cate->name }}</h5>
                     </a>
                 @endforeach
-                @foreach ($cates as $cate)
-                    <a class="cate-link flex-row" href="#">
-                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
-                        <h5 class="cate-name">{{ $cate->name }}</h5>
-                    </a>
-                @endforeach
-                @foreach ($cates as $cate)
-                    <a class="cate-link flex-row" href="#">
-                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
-                        <h5 class="cate-name">{{ $cate->name }}</h5>
-                    </a>
-                @endforeach
-                @foreach ($cates as $cate)
-                    <a class="cate-link flex-row" href="#">
-                        <img class="cate-icon" src="{{ url('/assets/images/demo.jpg') }}" alt="">
-                        <h5 class="cate-name">{{ $cate->name }}</h5>
-                    </a>
-                @endforeach
-                
             </div>
             
         </div>

@@ -35,7 +35,7 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Hãy nhập name.',
+            'name.required' => 'Hãy nhập tên sản phẩm',
             'image.nullable' => 'Hãy chọn ảnh sản phẩm',
             'description.nullable' => '',
             'price.nullable' => '0',

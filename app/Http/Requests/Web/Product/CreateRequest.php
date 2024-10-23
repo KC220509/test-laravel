@@ -25,7 +25,8 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
+            'image' => 'nullable',
+            'description' => 'nullable',
             'price'=> 'nullable',
             'sale' => 'nullable',
             'procate_id' => 'required'

@@ -2,11 +2,16 @@
 @section('productContent')
 
     <h1>Update Product</h1>
-    <form action="{{ url('products/' .$product->id) }}" method="post">
+    <form action="{{ route('product.update', $product->id) }}" method="post">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
+
+
         <label for="name">Name</label></br>
         <input type="text" name="name" id="name" class="form-control" value="{{ $product->name }}"></br>
+        @if ($errors->has('name'))
+            <span class="textydanger">{{ $errors->first('name') }}</span>
+        @endif
         <label for="description">Description</label></br>
         <input type="text" name="description" id="description" class="form-control"  value="{{ $product->description }}"></br>
         <label for="price">Price</label></br>

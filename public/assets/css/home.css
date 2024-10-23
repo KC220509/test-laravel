@@ -21,17 +21,19 @@
 
 .cate-box{
     
+    min-height: 330px;
     max-height: 330px;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
     box-shadow: 0px 0px 8px 1px inset #88a1c8;
-    gap: 15px;
+    gap: 8px;
     padding: 15px 20px;
     
 }
 
 .cate-link{
+    padding: 5px 0;
     text-decoration: none;
     color: #8c9baf;
     font-size: 18px;
@@ -48,7 +50,7 @@
     content: '';
     position: absolute;
     width: 0;
-    height: 3px;
+    height: 2px;
     bottom: -2px;
     left: 0;
     background-color: rgb(0, 157, 255); /* Màu sắc của gạch ngang */

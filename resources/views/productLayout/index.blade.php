@@ -2,6 +2,15 @@
 @extends('productLayout.main')
 @section('productContent')  
 
+    @if (Session :: has('success'))
+        <p>{{ Session :: get('success') }}</p>
+    @endif
+
+    @if (Session:: has('error'))
+        <p>{{ Session :: get('success') }}</p>
+    @endif
+    
+
     <h1>Products</h1>
     <table>
         <thead>
