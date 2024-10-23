@@ -11,6 +11,7 @@ use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Service\TaskService;
 use Illuminate\Http\Request;
+use Response;
 
 
 class TaskController extends Controller
@@ -21,25 +22,22 @@ class TaskController extends Controller
         $this->taskService = $taskService;
     }
 
-    public function index($limit = 3)
+    public function index(Request $request)
     {
-        $tasks = $this->taskService->pagination($limit);
-
-        return response()->json($tasks);
+        $result = $this->taskService->getList();
+        return TaskResource::apiPaginate($result, $request);
     }
     public function store(CreateRequest $createRequest)
-    {
+    {  
         $request = $createRequest->validated();
-        
         $result = $this->taskService->create($request);
-        
-        // $result = false;
         if ($result) {
-            return new TaskResource($result);
+            return response()->api_success('created success', $result);
         }
 
-        return response()->json(['message'=> 'error']);
+        return response()->api_error('created error');
     }
+
 
     public function show(Task $task){
         return new TaskResource(resource: $task);
@@ -89,5 +87,8 @@ class TaskController extends Controller
         return response()->json(['message'=> 'Khôi phục dữ liệu không thành công'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
-    
+    public function destroy(Task $task)
+    {
+        return $task->delete();
+    }
 }   

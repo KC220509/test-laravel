@@ -16,15 +16,10 @@ class CreateRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' =>  ['required', 'max:255'],
             'description' => 'required',
             'status'=> 'nullable',
         ];
